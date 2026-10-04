@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keysha Kuliner - Sistem Admin</title>
+
+  <!-- SEO Optimization -->
+  <meta name="description" content="Keysha Kuliner - Sistem Admin">
+  <meta name="author" content="Tim Keysha Kuliner">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+
+  <!-- Local Third-Party Libraries (100% Offline Compatible) -->
+  <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/libs/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/libs/apexcharts/apexcharts.css">
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+
+  <!-- Main Design System & Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+  <!-- ==========================================
+         START: Sidebar Component
+         Highly polished, dark-green sticky navigation
+         ========================================== -->
+  <div class="sidebar-wrapper" id="sidebar">
+    <!-- Brand Logo / Identity -->
+    <a href="index.html" class="sidebar-brand">
+      <i class="bi bi-asterisk"></i>
+      <span>Keysha Kuliner</span>
+    </a>
+
+    <!-- Navigation Menu -->
+    <div class="flex-grow-1 overflow-y-auto">
+      <!-- Group: Menu -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Menu</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="index.html" class="sidebar-menu-link active" id="menu-overview" title="Ringkasan">
+              <i class="bi bi-grid-fill"></i>
+              <span>Dasbor</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group: Komponen -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Komponen</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="tables-basic.html" class="sidebar-menu-link" id="menu-basictables" title="Tabel Data">
+              <i class="bi bi-table"></i>
+              <span>Tabel Data</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="ui-forms.html" class="sidebar-menu-link" id="menu-uiforms" title="Formulir & Input">
+              <i class="bi bi-input-cursor-text"></i>
+              <span>Formulir & Input</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="ui-buttons.html" class="sidebar-menu-link" id="menu-uibuttons" title="Tombol">
+              <i class="bi bi-menu-button-wide-fill"></i>
+              <span>Tombol & Notifikasi</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group: Halaman -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Halaman</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="page-blank.html" class="sidebar-menu-link" id="menu-blankpage" title="Halaman Kosong">
+              <i class="bi bi-file-earmark"></i>
+              <span>Halaman Kosong</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="page-login.html" class="sidebar-menu-link" id="menu-loginpage" title="Halaman Masuk">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Halaman Masuk</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="page-404.html" class="sidebar-menu-link" id="menu-404" title="Halaman 404">
+              <i class="bi bi-slash-circle"></i>
+              <span>Halaman 404</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sidebar Profile Card (Dynamic Footer) -->
+    <div class="sidebar-profile">
+      <img src="assets/images/avatar.png" alt="Administrator" class="sidebar-profile-img"
+        onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop'">
+      <div class="sidebar-profile-info">
+        <div class="sidebar-profile-name">Administrator</div>
+        <div class="sidebar-profile-email">admin@keyshakuliner.test</div>
+      </div>
+    </div>
+  </div>
+  <!-- ==========================================
+         END: Sidebar Component
+         ========================================== -->
+
+
+  <!-- ==========================================
+         START: Main Content Area
+         ========================================== -->
+  <div class="main-wrapper">
+
+    <!-- START: Top Navbar Component -->
+    <header class="navbar-custom">
+      <div class="navbar-left">
+        <!-- Desktop sidebar toggle (visible on large screens only) -->
+        <button class="btn-desktop-toggle d-none d-xl-flex align-items-center justify-content-center me-3"
+          id="desktop-sidebar-toggle" aria-label="Perkecil menu">
+          <i class="bi bi-chevron-bar-left"></i>
+        </button>
+        <!-- Mobile sidebar toggle -->
+        <button class="sidebar-toggle-btn me-2" id="sidebar-toggle" aria-label="Buka/tutup navigasi">
+          <i class="bi bi-list"></i>
+        </button>
+
+        <!-- Quick Aksi Dropdown -->
+        <div class="dropdown ms-2">
+          <button class="btn-quick-action dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+            id="quick-actions-dropdown">
+            <i class="bi bi-plus-lg"></i>
+            <span>Tambah</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-quick-action" aria-labelledby="quick-actions-dropdown">
+            <li class="dropdown-header">Aksi Cepat</li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus"></i> Tagihan Baru</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus"></i> Pengguna Baru</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam"></i> Produk Baru</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan Sistem</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mid navbar: search pill -->
+      <div class="navbar-search-wrapper">
+        <input type="text" class="navbar-search-input" placeholder="Cari apa saja di Keysha Kuliner..." id="main-search">
+        <button class="navbar-search-btn" aria-label="Cari">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+
+      <!-- Right actions -->
+      <div class="navbar-actions">
+        <!-- Fullscreen Toggle -->
+        <button class="navbar-action-btn me-1" aria-label="Layar Penuh" id="btn-fullscreen">
+          <i class="bi bi-arrows-fullscreen"></i>
+        </button>
+        <div class="dropdown">
+          <button class="navbar-action-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" id="btn-notifications" data-bs-auto-close="outside">
+            <i class="bi bi-bell"></i>
+            <span class="navbar-action-badge"></span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-notification p-0"
+            aria-labelledby="btn-notifications">
+            <div class="notification-header">
+              <h6 class="notification-title">Notifikasi</h6>
+              <button class="btn-clear-all" type="button">Tandai Semua Dibaca</button>
+            </div>
+            <div class="notification-list">
+              <!-- Sale Notification -->
+              <a href="#" class="notification-item">
+                <div class="notification-icon bg-success text-white">
+                  <i class="bi bi-wallet2"></i>
+                </div>
+                <div class="notification-content">
+                  <p class="notification-text">Penjualan baru diterima: <strong>Rp 150.000</strong></p>
+                  <span class="notification-time">2 menit yang lalu</span>
+                </div>
+                <span class="notification-unread-dot"></span>
+              </a>
+              <!-- User Registration Notification -->
+              <a href="#" class="notification-item">
+                <div class="notification-icon bg-primary text-white">
+                  <i class="bi bi-person-plus-fill"></i>
+                </div>
+                <div class="notification-content">
+                  <p class="notification-text">Pengguna baru terdaftar: <strong>Budi Santoso</strong></p>
+                  <span class="notification-time">1 jam yang lalu</span>
+                </div>
+                <span class="notification-unread-dot"></span>
+              </a>
+              <!-- Low Stock Notification -->
+              <a href="#" class="notification-item">
+                <div class="notification-icon bg-warning text-dark">
+                  <i class="bi bi-box-seam-fill"></i>
+                </div>
+                <div class="notification-content">
+                  <p class="notification-text">Stok mulai menipis: <strong>Paket Nasi Ayam</strong></p>
+                  <span class="notification-time">3 jam yang lalu</span>
+                </div>
+              </a>
+            </div>
+            <a href="#" class="notification-footer">Lihat Semua Notifikasi</a>
+          </div>
+        </div>
+
+        <!-- Profile Dropdown -->
+        <div class="dropdown ms-2">
+          <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" id="profile-dropdown">
+            <img src="assets/images/avatar.png" alt="Profile Image" class="navbar-profile-img">
+            <span class="navbar-profile-name d-none d-md-inline">Administrator</span>
+            <i class="bi bi-chevron-down navbar-profile-caret"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile" aria-labelledby="profile-dropdown">
+            <li class="dropdown-header">Selamat Datang!</li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Akun Saya</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-lock"></i> Kunci Layar</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item text-danger" href="page-login.html"><i class="bi bi-box-arrow-right"></i>
+                Keluar</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- END: Top Navbar Component -->
+
+    <!-- START: Dasbor Header Banner -->
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Dasbor</h1>
+        <p class="page-subtitle">Kelola penjualan dan operasional kuliner dengan mudah dan teratur.</p>
+      </div>
+      <button class="btn-date-picker" type="button" id="date-picker-trigger">
+        <i class="bi bi-calendar4-event"></i>
+        <span id="selected-date-range">12 Januari 2026 - 23 Januari 2026</span>
+        <i class="bi bi-chevron-down ms-1"></i>
+      </button>
+    </div>
+    <!-- END: Dasbor Header Banner -->
+
+    <!-- START: Main Layout Grid (2 Columns: Dasbor + Performance Pane) -->
+    <div class="row g-4">
+
+      <!-- TOP AREA: Quick Info Stat Cards Row (Full Width) -->
+      <div class="col-12">
+        <div class="row g-4">
+          <!-- Stat Card 1: Green Alert Banner -->
+          <div class="col-md-4">
+            <div class="card alert-green-card">
+              <div class="position-relative z-index-2">
+                <span class="alert-green-badge">Pembaruan</span>
+                <div class="alert-green-date">14 Februari 2026</div>
+                <div class="alert-green-text">Pendapatan penjualan meningkat 40% dalam 1 minggu</div>
+              </div>
+              <a href="#" class="alert-green-link z-index-2" id="alert-link-statistics">
+                <span>Lihat Statistik</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+
+              <!-- Inline SVG geometric decoration (Lime green 6-pointed star/asterisk with rounded caps) -->
+              <svg class="alert-green-bg-shape" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(50,50)">
+                  <rect x="-6" y="-45" width="12" height="90" rx="6" ry="6" fill="#B4F105" />
+                  <rect x="-6" y="-45" width="12" height="90" rx="6" ry="6" fill="#B4F105" transform="rotate(60)" />
+                  <rect x="-6" y="-45" width="12" height="90" rx="6" ry="6" fill="#B4F105" transform="rotate(120)" />
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Stat Card 2: Pendapatan Bersih -->
+          <div class="col-md-4">
+            <div class="card card-stat d-flex flex-column justify-content-between">
+              <div>
+                <div class="card-header">
+                  <span class="stat-label">Pendapatan Bersih</span>
+                  <div class="dropdown">
+                    <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                      aria-label="Opsi Lainnya" id="btn-more-income">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+                      <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat"></i> Muat Ulang</a></li>
+                      <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Ekspor
+                          Report</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-eye-slash"></i> Sembunyikan Detail</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="stat-value">Rp 196.000</div>
+                <div class="trend-badge trend-up">
+                  <i class="bi bi-arrow-up-right"></i>
+                  <span>+35% dari bulan lalu</span>
+                </div>
+              </div>
+              <div class="sparkline-container sparkline-card-footer">
+                <div id="income-sparkline"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 3: Total Pengembalian -->
+          <div class="col-md-4">
+            <div class="card card-stat d-flex flex-column justify-content-between">
+              <div>
+                <div class="card-header">
+                  <span class="stat-label">Total Pengembalian</span>
+                  <div class="dropdown">
+                    <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                      aria-label="Opsi Lainnya" id="btn-more-return">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+                      <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat"></i> Muat Ulang</a></li>
+                      <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Ekspor
+                          Report</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-eye-slash"></i> Sembunyikan Detail</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="stat-value">Rp 32.000</div>
+                <div class="trend-badge trend-down">
+                  <i class="bi bi-arrow-down-left"></i>
+                  <span>-24% dari bulan lalu</span>
+                </div>
+              </div>
+              <div class="sparkline-container sparkline-card-footer">
+                <div id="return-sparkline"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END: TOP AREA -->
+
+      <!-- LEFT AREA: Primary Dasbor Stats & Tables -->
+      <div class="col-xl-9 col-lg-8">
+
+        <!-- START: Details Area (Transaksis + Performance Charts) -->
+        <div class="row g-4">
+          <!-- Column: Pendapatan Chart (Full Width / Wider) -->
+          <div class="col-12">
+            <div class="card mb-0">
+              <div class="card-header mb-2">
+                <h2 class="card-title">Pendapatan</h2>
+                <!-- Custom Static Legends -->
+                <div class="d-flex gap-3 align-items-center">
+                  <div class="chart-legend-item">
+                    <span class="legend-dot bg-forest-medium"></span>
+                    <span class="chart-legend-label">Pemasukan</span>
+                  </div>
+                  <div class="chart-legend-item">
+                    <span class="legend-dot bg-lime-accent"></span>
+                    <span class="chart-legend-label">Pengeluaran</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-baseline gap-2 mb-3">
+                <span class="stat-value-amount">Rp 196.000</span>
+                <span class="trend-badge trend-up fs-xs">+35% dari bulan lalu</span>
+              </div>
+              <div id="revenue-chart"></div>
+            </div>
+          </div>
+
+          <!-- Column: Transaksi List -->
+          <div class="col-md-7 d-flex flex-column">
+            <div class="card h-100 flex-grow-1">
+              <div class="card-header">
+                <h2 class="card-title">Transaksi</h2>
+                <div class="dropdown">
+                  <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                    aria-label="Opsi Lainnya" id="btn-more-transaction">
+                    <i class="bi bi-three-dots"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-funnel"></i> Filter Status</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Ekspor CSV</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Transaksi Items List -->
+              <div class="transaction-list">
+                <div class="transaction-item">
+                  <div class="transaction-icon bg-forest-light text-lime">
+                    <i class="bi bi-spotify"></i>
+                  </div>
+                  <div class="transaction-info">
+                    <div class="transaction-name">Pembelian Bahan Baku</div>
+                    <div class="transaction-date">14 Februari 2026 • 12.40</div>
+                  </div>
+                  <div class="transaction-amount text-main">-Rp 15.000</div>
+                </div>
+
+                <div class="transaction-item">
+                  <div class="transaction-icon bg-forest-light text-lime">
+                    <i class="bi bi-paypal"></i>
+                  </div>
+                  <div class="transaction-info">
+                    <div class="transaction-name">Pembayaran Pesanan</div>
+                    <div class="transaction-date">13 Februari 2026 • 08.15</div>
+                  </div>
+                  <div class="transaction-amount text-success">+Rp 1.250.000</div>
+                </div>
+
+                <div class="transaction-item">
+                  <div class="transaction-icon bg-forest-light text-lime">
+                    <i class="bi bi-stripe"></i>
+                  </div>
+                  <div class="transaction-info">
+                    <div class="transaction-name">Pencairan Penjualan</div>
+                    <div class="transaction-date">11 Februari 2026 • 16.30</div>
+                  </div>
+                  <div class="transaction-amount text-success">+Rp 3.400.000</div>
+                </div>
+
+                <div class="transaction-item">
+                  <div class="transaction-icon bg-forest-light text-lime">
+                    <i class="bi bi-slack"></i>
+                  </div>
+                  <div class="transaction-info">
+                    <div class="transaction-name">Langganan Sistem</div>
+                    <div class="transaction-date">9 Februari 2026 • 09.20</div>
+                  </div>
+                  <div class="transaction-amount text-main">-Rp 45.000</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Column: Ringkasan Produk Progress -->
+          <div class="col-md-5 d-flex flex-column">
+            <div class="card h-100 flex-grow-1">
+              <div class="card-header">
+                <h2 class="card-title">Ringkasan Produk</h2>
+                <div class="dropdown">
+                  <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                    aria-label="Opsi Lainnya" id="btn-more-products">
+                    <i class="bi bi-three-dots"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-plus-lg"></i> Tambah Produk</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Kelola</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="progress-container">
+                <div class="progress-label-row">
+                  <span class="progress-label">Produk Diluncurkan</span>
+                  <span class="progress-value">233</span>
+                </div>
+                <div class="progress" role="progressbar" aria-label="Produk Diluncurkan Progress" aria-valuenow="65"
+                  aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar bg-lime-accent w-65"></div>
+                </div>
+              </div>
+
+              <div class="progress-container">
+                <div class="progress-label-row">
+                  <span class="progress-label">Produk Berjalan</span>
+                  <span class="progress-value">23</span>
+                </div>
+                <div class="progress" role="progressbar" aria-label="Produk Berjalan Progress" aria-valuenow="20"
+                  aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar bg-lime-accent opacity-50 w-50"></div>
+                </div>
+              </div>
+
+              <div class="progress-container">
+                <div class="progress-label-row">
+                  <span class="progress-label">Produk Terjual</span>
+                  <span class="progress-value">482</span>
+                </div>
+                <div class="progress" role="progressbar" aria-label="Produk Terjual Progress" aria-valuenow="85"
+                  aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar bg-lime-accent w-85"></div>
+                </div>
+              </div>
+
+              <div class="progress-container">
+                <div class="progress-label-row">
+                  <span class="progress-label">Produk Dikembalikan</span>
+                  <span class="progress-value">8</span>
+                </div>
+                <div class="progress" role="progressbar" aria-label="Produk Dikembalikan Progress" aria-valuenow="10"
+                  aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar bg-brand-orange w-38"></div>
+                </div>
+              </div>
+
+              <div class="progress-container">
+                <div class="progress-label-row">
+                  <span class="progress-label">Produk Tersedia</span>
+                  <span class="progress-value">1.420</span>
+                </div>
+                <div class="progress" role="progressbar" aria-label="Produk Tersedia Progress" aria-valuenow="75"
+                  aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar bg-lime-accent w-75"></div>
+                </div>
+              </div>
+
+              <div class="progress-container">
+                <div class="progress-label-row">
+                  <span class="progress-label">Menunggu Pengiriman</span>
+                  <span class="progress-value">64</span>
+                </div>
+                <div class="progress" role="progressbar" aria-label="Menunggu Pengiriman Progress" aria-valuenow="45"
+                  aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar bg-lime-accent opacity-50 w-45"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- END: Details Area -->
+
+      </div>
+
+      <!-- RIGHT AREA: Performance Details Sidebar Panel -->
+      <div class="col-xl-3 col-lg-4">
+        <div class="right-panel-wrapper d-flex flex-column gap-4 h-100">
+
+          <!-- Performance Donut Chart card -->
+          <div class="card flex-grow-1 d-flex flex-column justify-content-between mb-0">
+            <div class="card-header mb-1">
+              <h2 class="card-title">Performa Tampilan</h2>
+            </div>
+
+            <div id="views-chart"></div>
+
+            <!-- Custom Legends below the chart -->
+            <div class="chart-legends-container">
+              <div class="chart-legend-item">
+                <span class="legend-dot bg-lime-accent"></span>
+                <span class="text-muted-green">Jumlah Tampilan</span>
+              </div>
+              <div class="chart-legend-item">
+                <span class="legend-dot bg-forest-medium"></span>
+                <span class="text-muted-green">Persentase</span>
+              </div>
+              <div class="chart-legend-item">
+                <span class="legend-dot bg-brand-orange"></span>
+                <span class="text-muted-green">Penjualan</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level Up Promotion CTA banner -->
+          <div class="promo-banner-card">
+            <!-- Inline SVG geometric decoration (Lime green 6-pointed star/asterisk with rounded caps) -->
+            <svg class="promo-banner-bg-shape" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(50,50)">
+                <rect x="-6" y="-45" width="12" height="90" rx="6" ry="6" fill="#B4F105" />
+                <rect x="-6" y="-45" width="12" height="90" rx="6" ry="6" fill="#B4F105" transform="rotate(60)" />
+                <rect x="-6" y="-45" width="12" height="90" rx="6" ry="6" fill="#B4F105" transform="rotate(120)" />
+              </g>
+            </svg>
+
+            <h3 class="promo-title">Tingkatkan pengelolaan penjualan Anda.</h3>
+            <p class="promo-desc">Kelola penjualan dan operasional kuliner dengan mudah dan teratur.</p>
+            <button class="btn-promo" id="btn-promo-action">Lihat pembaruan sekarang</button>
+          </div>
+        </div>
+      </div>
+      <!-- END: RIGHT AREA -->
+
+    </div>
+    <!-- END: Main Layout Grid -->
+
+    <!-- START: Footer Component -->
+    <footer class="footer-custom">
+      <div class="footer-left">
+        <span class="footer-logo">
+          <i class="bi bi-asterisk"></i> Keysha Kuliner
+        </span>
+        <span class="footer-separator">|</span>
+        <span class="footer-copy">&copy; 2026 Dibuat dengan <i class="bi bi-heart-fill text-danger footer-heart"></i> oleh<a
+            href="https://sparkadminpro.gumroad.com/" target="_blank">Spark Admin</a>• Didistribusikan oleh <a
+            href="https://www.themewagon.com/" target="_blank">ThemeWagon</a> </span>
+      </div>
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">Ringkasan</a></li>
+          <li><a href="#" class="footer-link">Statistik</a></li>
+          <li><a href="#" class="footer-link">Bantuan & Dokumentasi</a></li>
+          <li><a href="#" class="footer-link">Status <span class="status-dot"></span></a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- END: Footer Component -->
+
+  </div>
+  <!-- ==========================================
+         END: Main Content Area
+         ========================================== -->
+
+  <!-- Local Third-Party Libraries Script dependencies -->
+  <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+
+  <!-- Local dashboard interactions controller -->
+  <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

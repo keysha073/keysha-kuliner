@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir - Keysha Kuliner</title>
+
+  <!-- SEO Optimization -->
+  <meta name="description" content="Formulir - Keysha Kuliner">
+  <meta name="author" content="Tim Keysha Kuliner">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+
+  <!-- Local Third-Party Libraries (100% Offline Compatible) -->
+  <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/libs/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/libs/apexcharts/apexcharts.css">
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+
+  <!-- Main Design System & Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+  <!-- ==========================================
+         START: Sidebar Component
+         Highly polished, dark-green navigation
+         ========================================== -->
+  <div class="sidebar-wrapper" id="sidebar">
+    <!-- Brand Logo / Identity -->
+    <a href="index.html" class="sidebar-brand">
+      <i class="bi bi-asterisk"></i>
+      <span>Keysha Kuliner</span>
+    </a>
+
+    <!-- Navigation Menu -->
+    <div class="flex-grow-1 overflow-y-auto">
+      <!-- Group: Menu -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Menu</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="index.html" class="sidebar-menu-link" id="menu-overview" title="Ringkasan">
+              <i class="bi bi-grid-fill"></i>
+              <span>Dasbor</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group: Komponen -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Komponen</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="tables-basic.html" class="sidebar-menu-link" id="menu-basictables" title="Tabel Data">
+              <i class="bi bi-table"></i>
+              <span>Tabel Data</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="ui-forms.html" class="sidebar-menu-link active" id="menu-uiforms" title="Formulir & Input">
+              <i class="bi bi-input-cursor-text"></i>
+              <span>Formulir & Input</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="ui-buttons.html" class="sidebar-menu-link" id="menu-uibuttons" title="Tombol">
+              <i class="bi bi-menu-button-wide-fill"></i>
+              <span>Tombol & Notifikasi</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group: Halaman -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Halaman</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="page-blank.html" class="sidebar-menu-link" id="menu-blankpage" title="Halaman Kosong">
+              <i class="bi bi-file-earmark"></i>
+              <span>Halaman Kosong</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="page-login.html" class="sidebar-menu-link" id="menu-loginpage" title="Halaman Masuk">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Halaman Masuk</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="page-404.html" class="sidebar-menu-link" id="menu-404" title="Halaman 404">
+              <i class="bi bi-slash-circle"></i>
+              <span>Halaman 404</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sidebar Profile Card (Dynamic Footer) -->
+    <div class="sidebar-profile">
+      <img src="assets/images/avatar.png" alt="Administrator" class="sidebar-profile-img"
+        onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop'">
+      <div class="sidebar-profile-info">
+        <div class="sidebar-profile-name">Administrator</div>
+        <div class="sidebar-profile-email">admin@keyshakuliner.test</div>
+      </div>
+    </div>
+  </div>
+  <!-- ==========================================
+         END: Sidebar Component
+         ========================================== -->
+
+
+  <!-- ==========================================
+         START: Main Content Area
+         ========================================== -->
+  <div class="main-wrapper">
+
+    <!-- START: Top Navbar Component -->
+    <header class="navbar-custom">
+      <div class="navbar-left">
+        <!-- Desktop sidebar toggle -->
+        <button class="btn-desktop-toggle d-none d-xl-flex align-items-center justify-content-center me-3"
+          id="desktop-sidebar-toggle" aria-label="Perkecil Menu">
+          <i class="bi bi-chevron-bar-left"></i>
+        </button>
+        <!-- Mobile sidebar toggle -->
+        <button class="sidebar-toggle-btn me-2" id="sidebar-toggle" aria-label="Buka/Tutup Navigasi">
+          <i class="bi bi-list"></i>
+        </button>
+
+        <!-- Quick Aksi Dropdown -->
+        <div class="dropdown ms-2">
+          <button class="btn-quick-action dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+            id="quick-actions-dropdown">
+            <i class="bi bi-plus-lg"></i>
+            <span>Tambah</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-quick-action" aria-labelledby="quick-actions-dropdown">
+            <li class="dropdown-header">Aksi Cepat</li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus"></i> Tagihan Baru</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus"></i> Pengguna Baru</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam"></i> Produk Baru</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan Sistem</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mid navbar: search pill -->
+      <div class="navbar-search-wrapper">
+        <input type="text" class="navbar-search-input" placeholder="Cari apa saja di Keysha Kuliner..." id="main-search">
+        <button class="navbar-search-btn" aria-label="Cari">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+
+      <!-- Right actions -->
+      <div class="navbar-actions">
+        <!-- Fullscreen Toggle -->
+        <button class="navbar-action-btn me-1" aria-label="Layar Penuh" id="btn-fullscreen">
+          <i class="bi bi-arrows-fullscreen"></i>
+        </button>
+        <div class="dropdown">
+          <button class="navbar-action-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" id="btn-notifications" data-bs-auto-close="outside">
+            <i class="bi bi-bell"></i>
+            <span class="navbar-action-badge"></span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-notification p-0"
+            aria-labelledby="btn-notifications">
+            <div class="notification-header">
+              <h6 class="notification-title">Notifikasi</h6>
+              <button class="btn-clear-all" type="button">Tandai Semua Dibaca</button>
+            </div>
+            <div class="notification-list">
+              <a href="#" class="notification-item">
+                <div class="notification-icon bg-success text-white">
+                  <i class="bi bi-wallet2"></i>
+                </div>
+                <div class="notification-content">
+                  <p class="notification-text">Penjualan baru diterima: <strong>Rp 150.000</strong></p>
+                  <span class="notification-time">2 menit yang lalu</span>
+                </div>
+                <span class="notification-unread-dot"></span>
+              </a>
+              <a href="#" class="notification-item">
+                <div class="notification-icon bg-primary text-white">
+                  <i class="bi bi-person-plus-fill"></i>
+                </div>
+                <div class="notification-content">
+                  <p class="notification-text">Pengguna baru terdaftar: <strong>John Doe</strong></p>
+                  <span class="notification-time">1 jam yang lalu</span>
+                </div>
+                <span class="notification-unread-dot"></span>
+              </a>
+            </div>
+            <a href="#" class="notification-footer">Lihat Semua Notifikasi</a>
+          </div>
+        </div>
+
+        <!-- Profile Dropdown -->
+        <div class="dropdown ms-2">
+          <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" id="profile-dropdown">
+            <img src="assets/images/avatar.png" alt="Profile Image" class="navbar-profile-img">
+            <span class="navbar-profile-name d-none d-md-inline">Administrator</span>
+            <i class="bi bi-chevron-down navbar-profile-caret"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile" aria-labelledby="profile-dropdown">
+            <li class="dropdown-header">Selamat Datang!</li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Akun Saya</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item text-danger" href="page-login.html"><i class="bi bi-box-arrow-right"></i>
+                Keluar</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- END: Top Navbar Component -->
+
+    <!-- START: Page Header Banner -->
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Formulir & Elemen Input</h1>
+        <p class="page-subtitle">Elemen formulir, tombol pengalih, dan input yang siap digunakan.</p>
+      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted-green">Beranda</a></li>
+          <li class="breadcrumb-item text-muted-green">Komponen</li>
+          <li class="breadcrumb-item active text-main" aria-current="page">Formulir & Input</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- END: Page Header Banner -->
+
+    <!-- START: Form Component Row Grid Layout -->
+    <div class="row g-4 mb-4">
+
+      <!-- Column 1: Basic controls -->
+      <div class="col-12 col-lg-6">
+        <div class="card border-light shadow-sm p-4 h-100">
+          <h5 class="card-title mb-4">Kolom Dasar</h5>
+
+          <!-- Text input -->
+          <div class="mb-3">
+            <label for="basicText" class="form-label-custom">Nama Pengguna</label>
+            <input type="text" class="form-control-custom" id="basicText" placeholder="Masukkan nama pengguna">
+          </div>
+
+          <!-- Email input -->
+          <div class="mb-3">
+            <label for="basicEmail" class="form-label-custom">Alamat Email</label>
+            <input type="email" class="form-control-custom" id="basicEmail" placeholder="nama@contoh.com">
+            <span class="text-muted">Email Anda tidak akan dibagikan kepada pihak lain.</span>
+          </div>
+
+          <!-- Kata Sandi input -->
+          <div class="mb-3">
+            <label for="basicKata Sandi" class="form-label-custom">Kata Sandi</label>
+            <input type="password" class="form-control-custom" id="basicKata Sandi"
+              placeholder="Masukkan kata sandi Anda">
+          </div>
+
+          <!-- Disabled State -->
+          <div class="mb-3">
+            <label for="basicDisabled" class="form-label-custom">Input Dinonaktifkan</label>
+            <input type="text" class="form-control-custom" id="basicDisabled" value="This input field is disabled"
+              disabled>
+          </div>
+
+          <!-- Readonly State -->
+          <div class="mb-0">
+            <label for="basicReadonly" class="form-label-custom">Input Hanya Baca</label>
+            <input type="text" class="form-control-custom" id="basicReadonly" value="This field is read-only" readonly>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Pilihan & Validasi -->
+      <div class="col-12 col-lg-6">
+        <div class="card border-light shadow-sm p-4 h-100">
+          <h5 class="card-title mb-4">Pilihan & Validasi</h5>
+
+          <!-- Custom dropdown select -->
+          <div class="mb-3">
+            <label for="selectControl" class="form-label-custom">Tema Pilihan</label>
+            <select class="form-select-custom" id="selectControl">
+              <option selected disabled>Pilih tema tampilan...</option>
+              <option value="light">Tema Terang</option>
+              <option value="dark">Tema Hijau Gelap</option>
+              <option value="forest">Aksen Forest Breeze</option>
+            </select>
+          </div>
+
+          <!-- Textarea layout -->
+          <div class="mb-3">
+            <label for="textareaControl" class="form-label-custom">Deskripsi / Bio</label>
+            <textarea class="form-control-custom" id="textareaControl" rows="3"
+              placeholder="Ceritakan tentang diri Anda..."></textarea>
+          </div>
+
+          <!-- Valid feedback block -->
+          <div class="mb-3">
+            <label for="validInput" class="form-label-custom">Kolom Valid</label>
+            <input type="text" class="form-control-custom is-valid-custom" id="validInput" value="spark_admin_user">
+            <div class="form-feedback-custom valid-custom">
+              <i class="bi bi-check-circle-fill"></i> Nama pengguna tersedia!
+            </div>
+          </div>
+
+          <!-- Invalid feedback block -->
+          <div class="mb-0">
+            <label for="invalidInput" class="form-label-custom">Kolom Tidak Valid</label>
+            <input type="email" class="form-control-custom is-invalid-custom" id="invalidInput"
+              value="invalid-email-format">
+            <div class="form-feedback-custom invalid-custom">
+              <i class="bi bi-exclamation-circle-fill"></i> Masukkan alamat email yang valid.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Sizing & Groups -->
+      <div class="col-12 col-lg-6">
+        <div class="card border-light shadow-sm p-4 h-100">
+          <h5 class="card-title mb-4">Ukuran Input & Grup Dekorator</h5>
+
+          <!-- Sizing examples -->
+          <div class="mb-4">
+            <div class="mb-2">
+              <label class="form-label-custom">Kontrol Besar</label>
+              <input type="text" class="form-control-custom form-control-custom-lg" placeholder="Kotak teks besar">
+            </div>
+            <div class="mb-2">
+              <label class="form-label-custom">Kontrol Standar</label>
+              <input type="text" class="form-control-custom" placeholder="Kotak teks standar">
+            </div>
+            <div>
+              <label class="form-label-custom">Kontrol Kecil</label>
+              <input type="text" class="form-control-custom form-control-custom-sm" placeholder="Kotak teks kecil">
+            </div>
+          </div>
+
+          <h6 class="mb-3">Grup Input</h6>
+
+          <!-- Prepend group -->
+          <div class="mb-3">
+            <div class="input-group-custom">
+              <span class="input-group-text-custom">@</span>
+              <input type="text" class="form-control-custom" placeholder="Nama Pengguna">
+            </div>
+          </div>
+
+          <!-- Append group -->
+          <div class="mb-3">
+            <div class="input-group-custom">
+              <input type="text" class="form-control-custom" placeholder="Nama pengguna penerima">
+              <span class="input-group-text-custom">@keyshakuliner.test</span>
+            </div>
+          </div>
+
+          <!-- Prepend + Append Icon group -->
+          <div class="mb-0">
+            <div class="input-group-custom">
+              <span class="input-group-text-custom"><i class="bi bi-wallet2"></i></span>
+              <input type="text" class="form-control-custom" placeholder="Jumlah Tagihan">
+              <span class="input-group-text-custom">IDR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 4: Checkboxes, Radios & iOS Switches -->
+      <div class="col-12 col-lg-6">
+        <div class="card border-light shadow-sm p-4 h-100">
+          <h5 class="card-title mb-4">Checkbox, Radio & Pengalih</h5>
+
+          <h6 class="mb-3">Checkbox Kustom</h6>
+          <div class="mb-4">
+            <div class="form-check-custom">
+              <input class="form-check-input-custom" type="checkbox" id="checkActive" checked>
+              <label class="form-check-label" for="checkActive">Opsi kustom terpilih</label>
+            </div>
+            <div class="form-check-custom">
+              <input class="form-check-input-custom" type="checkbox" id="checkInactive">
+              <label class="form-check-label" for="checkInactive">Opsi kustom tidak terpilih</label>
+            </div>
+            <div class="form-check-custom">
+              <input class="form-check-input-custom" type="checkbox" id="checkDisabled" disabled checked>
+              <label class="form-check-label" for="checkDisabled">Opsi terpilih yang dinonaktifkan</label>
+            </div>
+          </div>
+
+          <h6 class="mb-3">Elemen Radio Kustom</h6>
+          <div class="mb-4">
+            <div class="form-check-custom">
+              <input class="form-check-input-custom" type="radio" name="radioGroup" id="radioOne" checked>
+              <label class="form-check-label" for="radioOne">Pilihan radio A</label>
+            </div>
+            <div class="form-check-custom">
+              <input class="form-check-input-custom" type="radio" name="radioGroup" id="radioTwo">
+              <label class="form-check-label" for="radioTwo">Pilihan radio B</label>
+            </div>
+          </div>
+
+          <h6 class="mb-3">Kontrol Pengalih (Gaya iOS)</h6>
+          <div>
+            <div class="form-switch-custom">
+              <input class="form-switch-input-custom" type="checkbox" id="switchOne" checked>
+              <label class="form-switch-label" for="switchOne">Aktifkan notifikasi email</label>
+            </div>
+            <div class="form-switch-custom">
+              <input class="form-switch-input-custom" type="checkbox" id="switchTwo">
+              <label class="form-switch-label" for="switchTwo">Tampilkan profil secara publik</label>
+            </div>
+            <div class="form-switch-custom">
+              <input class="form-switch-input-custom" type="checkbox" id="switchThree" disabled>
+              <label class="form-switch-label" for="switchThree">Aktifkan sinkronisasi latar belakang (Dinonaktifkan)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- END: Form Component Row Grid Layout -->
+
+    <!-- START: Footer Component -->
+    <footer class="footer-custom">
+      <div class="footer-left">
+        <span class="footer-logo">
+          <i class="bi bi-asterisk"></i> Keysha Kuliner
+        </span>
+        <span class="footer-separator">|</span>
+        <span class="footer-copy">&copy; 2026 Dibuat dengan <i class="bi bi-heart-fill text-danger footer-heart"></i> oleh<a
+            href="https://sparkadminpro.gumroad.com/" target="_blank">Spark Admin</a>• Didistribusikan oleh <a
+            href="https://www.themewagon.com/" target="_blank">ThemeWagon</a> </span>
+      </div>
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">Ringkasan</a></li>
+          <li><a href="#" class="footer-link">Statistik</a></li>
+          <li><a href="#" class="footer-link">Bantuan & Dokumentasi</a></li>
+          <li><a href="#" class="footer-link">Status <span class="status-dot"></span></a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- END: Footer Component -->
+
+  </div>
+  <!-- ==========================================
+         END: Main Content Area
+         ========================================== -->
+
+  <!-- Local Third-Party Libraries Script dependencies -->
+  <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+
+  <!-- Local dashboard interactions controller -->
+  <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

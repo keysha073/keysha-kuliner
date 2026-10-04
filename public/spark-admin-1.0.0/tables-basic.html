@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabel Data - Keysha Kuliner</title>
+
+  <!-- SEO Optimization -->
+  <meta name="description" content="Tabel Data - Keysha Kuliner">
+  <meta name="author" content="Tim Keysha Kuliner">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+
+  <!-- Local Third-Party Libraries (100% Offline Compatible) -->
+  <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/libs/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/libs/apexcharts/apexcharts.css">
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+
+  <!-- Main Design System & Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+  <!-- ==========================================
+         START: Sidebar Component
+         Highly polished, dark-green navigation
+         ========================================== -->
+  <div class="sidebar-wrapper" id="sidebar">
+    <!-- Brand Logo / Identity -->
+    <a href="index.html" class="sidebar-brand">
+      <i class="bi bi-asterisk"></i>
+      <span>Keysha Kuliner</span>
+    </a>
+
+    <!-- Navigation Menu -->
+    <div class="flex-grow-1 overflow-y-auto">
+      <!-- Group: Menu -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Menu</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="index.html" class="sidebar-menu-link" id="menu-overview" title="Ringkasan">
+              <i class="bi bi-grid-fill"></i>
+              <span>Dasbor</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group: Komponen -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Komponen</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="tables-basic.html" class="sidebar-menu-link active" id="menu-basictables" title="Tabel Data">
+              <i class="bi bi-table"></i>
+              <span>Tabel Data</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="ui-forms.html" class="sidebar-menu-link" id="menu-uiforms" title="Formulir & Input">
+              <i class="bi bi-input-cursor-text"></i>
+              <span>Formulir & Input</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="ui-buttons.html" class="sidebar-menu-link" id="menu-uibuttons" title="Tombol">
+              <i class="bi bi-menu-button-wide-fill"></i>
+              <span>Tombol & Notifikasi</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group: Halaman -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Halaman</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="page-blank.html" class="sidebar-menu-link" id="menu-blankpage" title="Halaman Kosong">
+              <i class="bi bi-file-earmark"></i>
+              <span>Halaman Kosong</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="page-login.html" class="sidebar-menu-link" id="menu-loginpage" title="Halaman Masuk">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Halaman Masuk</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="page-404.html" class="sidebar-menu-link" id="menu-404" title="Halaman 404">
+              <i class="bi bi-slash-circle"></i>
+              <span>Halaman 404</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sidebar Profile Card (Dynamic Footer) -->
+    <div class="sidebar-profile">
+      <img src="assets/images/avatar.png" alt="Administrator" class="sidebar-profile-img"
+        onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop'">
+      <div class="sidebar-profile-info">
+        <div class="sidebar-profile-name">Administrator</div>
+        <div class="sidebar-profile-email">admin@keyshakuliner.test</div>
+      </div>
+    </div>
+  </div>
+  <!-- ==========================================
+         END: Sidebar Component
+         ========================================== -->
+
+
+  <!-- ==========================================
+         START: Main Content Area
+         ========================================== -->
+  <div class="main-wrapper">
+
+    <!-- START: Top Navbar Component -->
+    <header class="navbar-custom">
+      <div class="navbar-left">
+        <!-- Desktop sidebar toggle (visible on large screens only) -->
+        <button class="btn-desktop-toggle d-none d-xl-flex align-items-center justify-content-center me-3"
+          id="desktop-sidebar-toggle" aria-label="Perkecil Menu">
+          <i class="bi bi-chevron-bar-left"></i>
+        </button>
+        <!-- Mobile sidebar toggle -->
+        <button class="sidebar-toggle-btn me-2" id="sidebar-toggle" aria-label="Buka/Tutup Navigasi">
+          <i class="bi bi-list"></i>
+        </button>
+
+        <!-- Quick Aksi Dropdown -->
+        <div class="dropdown ms-2">
+          <button class="btn-quick-action dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+            id="quick-actions-dropdown">
+            <i class="bi bi-plus-lg"></i>
+            <span>Tambah</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-quick-action" aria-labelledby="quick-actions-dropdown">
+            <li class="dropdown-header">Aksi Cepat</li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus"></i> Tagihan Baru</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus"></i> Pengguna Baru</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam"></i> Produk Baru</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan Sistem</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mid navbar: search pill -->
+      <div class="navbar-search-wrapper">
+        <input type="text" class="navbar-search-input" placeholder="Cari apa saja di Keysha Kuliner..." id="main-search">
+        <button class="navbar-search-btn" aria-label="Cari">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+
+      <!-- Right actions -->
+      <div class="navbar-actions">
+        <!-- Fullscreen Toggle -->
+        <button class="navbar-action-btn me-1" aria-label="Layar Penuh" id="btn-fullscreen">
+          <i class="bi bi-arrows-fullscreen"></i>
+        </button>
+        <div class="dropdown">
+          <button class="navbar-action-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" id="btn-notifications" data-bs-auto-close="outside">
+            <i class="bi bi-bell"></i>
+            <span class="navbar-action-badge"></span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-notification p-0"
+            aria-labelledby="btn-notifications">
+            <div class="notification-header">
+              <h6 class="notification-title">Notifikasi</h6>
+              <button class="btn-clear-all" type="button">Tandai Semua Dibaca</button>
+            </div>
+            <div class="notification-list">
+              <!-- Sale Notification -->
+              <a href="#" class="notification-item">
+                <div class="notification-icon bg-success text-white">
+                  <i class="bi bi-wallet2"></i>
+                </div>
+                <div class="notification-content">
+                  <p class="notification-text">Penjualan baru diterima: <strong>Rp 150.000</strong></p>
+                  <span class="notification-time">2 menit yang lalu</span>
+                </div>
+                <span class="notification-unread-dot"></span>
+              </a>
+              <!-- User Registration Notification -->
+              <a href="#" class="notification-item">
+                <div class="notification-icon bg-primary text-white">
+                  <i class="bi bi-person-plus-fill"></i>
+                </div>
+                <div class="notification-content">
+                  <p class="notification-text">Pengguna baru terdaftar: <strong>John Doe</strong></p>
+                  <span class="notification-time">1 jam yang lalu</span>
+                </div>
+                <span class="notification-unread-dot"></span>
+              </a>
+              <!-- Low Stock Notification -->
+              <a href="#" class="notification-item">
+                <div class="notification-icon bg-warning text-dark">
+                  <i class="bi bi-box-seam-fill"></i>
+                </div>
+                <div class="notification-content">
+                  <p class="notification-text">Stok mulai menipis: <strong>Hoodie</strong></p>
+                  <span class="notification-time">3 jam yang lalu</span>
+                </div>
+              </a>
+            </div>
+            <a href="#" class="notification-footer">Lihat Semua Notifikasi</a>
+          </div>
+        </div>
+
+        <!-- Profile Dropdown -->
+        <div class="dropdown ms-2">
+          <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" id="profile-dropdown">
+            <img src="assets/images/avatar.png" alt="Profile Image" class="navbar-profile-img">
+            <span class="navbar-profile-name d-none d-md-inline">Administrator</span>
+            <i class="bi bi-chevron-down navbar-profile-caret"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile" aria-labelledby="profile-dropdown">
+            <li class="dropdown-header">Selamat Datang!</li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Akun Saya</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-lock"></i> Kunci Layar</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item text-danger" href="page-login.html"><i class="bi bi-box-arrow-right"></i>
+                Keluar</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- END: Top Navbar Component -->
+
+    <!-- START: Page Header Banner -->
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Tabel Data</h1>
+        <p class="page-subtitle">Komponen tabel data responsif yang mudah disesuaikan.</p>
+      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted-green">Beranda</a></li>
+          <li class="breadcrumb-item text-muted-green">Komponen</li>
+          <li class="breadcrumb-item active text-main" aria-current="page">Tabel Data</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- END: Page Header Banner -->
+
+    <!-- START: Basic Table Card Container -->
+    <div class="table-card-custom">
+      <!-- Header Controls -->
+      <div class="table-header-control">
+        <!-- Cari bar -->
+        <div class="table-search-box">
+          <i class="bi bi-search table-search-icon"></i>
+          <input type="text" class="table-search-input" placeholder="Cari pesanan atau produk...">
+        </div>
+        <!-- Action buttons / Filter options -->
+        <div class="table-filter-group">
+          <div class="dropdown">
+            <button class="btn-table-action dropdown-toggle" type="button" id="dropdownFilterStatus"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-funnel"></i> Status Filter
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownFilterStatus">
+              <li><a class="dropdown-item" href="#">Semua Status</a></li>
+              <li><a class="dropdown-item" href="#">Berhasil / Lunas</a></li>
+              <li><a class="dropdown-item" href="#">Diproses</a></li>
+              <li><a class="dropdown-item" href="#">Dibatalkan / Gagal</a></li>
+            </ul>
+          </div>
+          <button class="btn-table-action" type="button">
+            <i class="bi bi-file-earmark-arrow-down"></i> Ekspor
+          </button>
+        </div>
+      </div>
+
+      <!-- Responsive Table Wrapper -->
+      <div class="table-responsive">
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>ID Pesanan</th>
+              <th>Pelanggan</th>
+              <th>Informasi Produk</th>
+              <th>Kategori</th>
+              <th>Jumlah</th>
+              <th>Tanggal Pesanan</th>
+              <th>Status</th>
+              <th class="text-center">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row 1 -->
+            <tr>
+              <td class="table-order-id">#PES-9982</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_1.jpg" alt="Siti Rahma" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Siti Rahma</div>
+                    <div class="table-user-sub">siti.rahma@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Paket Nasi Ayam</td>
+              <td>Makanan</td>
+              <td class="table-amount">Rp 89.900</td>
+              <td>14 Februari 2026</td>
+              <td><span class="badge-table success">Lunas</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+              <td class="table-order-id">#PES-9981</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_2.jpg" alt="Andi Pratama" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Andi Pratama</div>
+                    <div class="table-user-sub">andi.pratama@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Paket Seafood</td>
+              <td>Minuman</td>
+              <td class="table-amount">Rp 499.000</td>
+              <td>13 Februari 2026</td>
+              <td><span class="badge-table pending">Diproses</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr>
+              <td class="table-order-id">#PES-9980</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_3.jpg" alt="Dewi Lestari" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Dewi Lestari</div>
+                    <div class="table-user-sub">dewi.lestari@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Paket Mie Goreng</td>
+              <td>Makanan</td>
+              <td class="table-amount">Rp 35.000</td>
+              <td>12 Februari 2026</td>
+              <td><span class="badge-table success">Lunas</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 4 -->
+            <tr>
+              <td class="table-order-id">#PES-9979</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_4.jpg" alt="Rizky Maulana" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Rizky Maulana</div>
+                    <div class="table-user-sub">rizky.maulana@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Es Kopi Susu</td>
+              <td>Minuman</td>
+              <td class="table-amount">Rp 129.900</td>
+              <td>11 Februari 2026</td>
+              <td><span class="badge-table failed">Gagal</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 5 -->
+            <tr>
+              <td class="table-order-id">#PES-9978</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_5.jpg" alt="Fajar Hidayat" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Fajar Hidayat</div>
+                    <div class="table-user-sub">fajar.hidayat@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Paket Ayam Geprek</td>
+              <td>Minuman</td>
+              <td class="table-amount">Rp 45.000</td>
+              <td>10 Februari 2026</td>
+              <td><span class="badge-table success">Lunas</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 6 -->
+            <tr>
+              <td class="table-order-id">#PES-9977</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_6.jpg" alt="Nadia Putri" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Nadia Putri</div>
+                    <div class="table-user-sub">nadia.putri@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Paket Keluarga</td>
+              <td>Paket Keluarga</td>
+              <td class="table-amount">Rp 249.000</td>
+              <td>9 Februari 2026</td>
+              <td><span class="badge-table pending">Diproses</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 7 -->
+            <tr>
+              <td class="table-order-id">#PES-9976</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_7.jpg" alt="Arif Setiawan" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Arif Setiawan</div>
+                    <div class="table-user-sub">arif.setiawan@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Paket Burger</td>
+              <td>Minuman</td>
+              <td class="table-amount">Rp 119.000</td>
+              <td>8 Februari 2026</td>
+              <td><span class="badge-table success">Lunas</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 8 -->
+            <tr>
+              <td class="table-order-id">#PES-9975</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_8.jpg" alt="Maya Sari" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Maya Sari</div>
+                    <div class="table-user-sub">maya.sari@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Jus Alpukat</td>
+              <td>Minuman</td>
+              <td class="table-amount">Rp 79.900</td>
+              <td>7 Februari 2026</td>
+              <td><span class="badge-table failed">Dibatalkan</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 9 -->
+            <tr>
+              <td class="table-order-id">#PES-9974</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_1.jpg" alt="Rina Wulandari" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Rina Wulandari</div>
+                    <div class="table-user-sub">rina.wulandari@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Kopi Susu Gula Aren</td>
+              <td>Beranda</td>
+              <td class="table-amount">Rp 24.500</td>
+              <td>6 Februari 2026</td>
+              <td><span class="badge-table success">Lunas</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 10 -->
+            <tr>
+              <td class="table-order-id">#PES-9973</td>
+              <td>
+                <div class="table-user-cell">
+                  <img src="assets/images/user_2.jpg" alt="Yoga Saputra" class="table-user-avatar"
+                    onerror="this.src='assets/images/avatar.png'">
+                  <div>
+                    <div class="table-user-name">Yoga Saputra</div>
+                    <div class="table-user-sub">yoga.saputra@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="table-product-name">Paket Snack</td>
+              <td>Makanan</td>
+              <td class="table-amount">Rp 39.900</td>
+              <td>5 Februari 2026</td>
+              <td><span class="badge-table success">Lunas</span></td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <a href="#" class="table-btn-action" title="Lihat detail"><i class="bi bi-eye"></i></a>
+                  <a href="#" class="table-btn-action" title="Edit data"><i class="bi bi-pencil"></i></a>
+                  <a href="#" class="table-btn-action delete" title="Hapus data"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer Controls / Pagination -->
+      <div class="table-footer-control">
+        <span class="table-pagination-info">Menampilkan 1 sampai 10 dari 50 data</span>
+        <nav aria-label="Page navigation">
+          <ul class="pagination mb-0 gap-1">
+            <li class="page-item disabled"><a class="page-link border-0" href="#"><i class="bi bi-chevron-left"></i></a>
+            </li>
+            <li class="page-item active"><a class="page-link border-0" href="#">1</a></li>
+            <li class="page-item"><a class="page-link border-0" href="#">2</a></li>
+            <li class="page-item"><a class="page-link border-0" href="#">3</a></li>
+            <li class="page-item"><a class="page-link border-0" href="#"><i class="bi bi-chevron-right"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- END: Basic Table Card Container -->
+
+    <!-- START: Footer Component -->
+    <footer class="footer-custom">
+      <div class="footer-left">
+        <span class="footer-logo">
+          <i class="bi bi-asterisk"></i> Keysha Kuliner
+        </span>
+        <span class="footer-separator">|</span>
+        <span class="footer-copy">&copy; 2026 Dibuat dengan <i class="bi bi-heart-fill text-danger footer-heart"></i> oleh<a
+            href="https://sparkadminpro.gumroad.com/" target="_blank">Spark Admin</a>• Didistribusikan oleh <a
+            href="https://www.themewagon.com/" target="_blank">ThemeWagon</a> </span>
+      </div>
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">Ringkasan</a></li>
+          <li><a href="#" class="footer-link">Statistik</a></li>
+          <li><a href="#" class="footer-link">Bantuan & Dokumentasi</a></li>
+          <li><a href="#" class="footer-link">Status <span class="status-dot"></span></a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- END: Footer Component -->
+
+  </div>
+  <!-- ==========================================
+         END: Main Content Area
+         ========================================== -->
+
+  <!-- Local Third-Party Libraries Script dependencies -->
+  <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+
+  <!-- Local dashboard interactions controller -->
+  <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>
