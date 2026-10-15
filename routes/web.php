@@ -7,6 +7,7 @@ use App\Http\Controllers\ReservasiController;
 use App\Models\Menu;
 use App\Models\Pelanggan;
 use App\Models\Reservasi;
+use App\Http\Controllers\UserController;
 
 // Halaman awal
 Route::get('/', function () {
@@ -31,3 +32,5 @@ Route::get('/admin', function () {
 Route::resource('menu', MenuController::class)->except('show');
 Route::resource('pelanggan', PelangganController::class)->except('show');
 Route::resource('reservasi', ReservasiController::class)->except('show');
+
+Route::resource('user', UserController::class)->except(['show']);
