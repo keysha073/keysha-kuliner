@@ -8,11 +8,17 @@ use App\Models\Menu;
 use App\Models\Pelanggan;
 use App\Models\Reservasi;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\AuthController;
 
 // Halaman awal
-Route::get('/', function () {
-    return view('welcome');
-});
+// Guest
+Route::get('/', [GuestController::class, 'home'])->name('home');
+Route::get('/contact', [GuestController::class, 'contact'])->name('contact');
+
+// Login
+Route::get('/auth', [AuthController::class, 'index'])->name('login');
+Route::post('/auth', [AuthController::class, 'login'])->name('login.process');
 
 // Website pengunjung (template Chefer)
 Route::get('/guest', function () {
